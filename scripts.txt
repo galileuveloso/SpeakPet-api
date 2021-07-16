@@ -1,0 +1,15 @@
+create table Usuario(
+	id int identity(1,1) primary key,
+	login varchar(255) unique not null,
+	senha varchar(255) not null
+)
+
+create table Audio(
+	id int identity(1,1) primary key,
+	titulo varchar(255) not null,
+	arquivo varbinary(max) filestream not null,
+	RowGuid UNIQUEIDENTIFIER  NOT NULL  ROWGUIDCOL
+	UNIQUE DEFAULT NEWID(),
+	idUsuario int not null,
+	constraint pk_Usuario Foreign key (idUsuario) REFERENCES Usuario(id)
+)
