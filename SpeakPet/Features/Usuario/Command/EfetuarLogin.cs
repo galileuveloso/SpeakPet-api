@@ -42,7 +42,7 @@ namespace SpeakPet.Features.Usuario.Command
                 if(usuario == null || !usuario.IdUsuario.HasValue)
                     return Task.FromResult(new EfetuarLoginResponse
                     {
-                        Mensagem = "Usuário inválido",
+                        Mensagem = "Nenhum usuário encontrado.",
                         Sucesso = true,
                         IdUsuario = null
                     });
@@ -51,7 +51,7 @@ namespace SpeakPet.Features.Usuario.Command
             {
                 return Task.FromResult(new EfetuarLoginResponse
                 {
-                    Mensagem = "Ocorreu um erro ao tentar Efetuar o Login",
+                    Mensagem = "Ocorreu um erro ao tentar Efetuar o Login.",
                     Sucesso = false
                 });
             }

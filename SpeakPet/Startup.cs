@@ -23,6 +23,10 @@ namespace SpeakPet
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            SetupCors(services);
+
+            services.AddHttpContextAccessor();
+
             services.AddControllers();
 
             services.AddMediatR(typeof(Startup));
@@ -33,6 +37,21 @@ namespace SpeakPet
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SpeakPet", Version = "v1" });
+            });
+
+        }
+
+        private void SetupCors(IServiceCollection services)
+        {
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(builder =>
+                {
+                    builder
+                        .AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                });
             });
         }
 
@@ -62,6 +81,8 @@ namespace SpeakPet
                 c.RoutePrefix = string.Empty;
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
             });
+
+            app.UseCors();
         }
     }
 }

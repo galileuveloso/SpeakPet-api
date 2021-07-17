@@ -25,13 +25,13 @@ namespace SpeakPet.DAO
 
             sql.Append(@"
                         SELECT Login as Login,
-                            Id as Id,
+                            Id as IdUsuario,
                             Senha as Senha
                         FROM Usuario
                         WHERE login = @Login
                             AND senha = @Senha
                         ");
-
+            
             return Conexao.GetConnection().QuerySingleOrDefault<UsuarioModel>(sql.ToString(), new { Login = login, Senha = senha });
         }
     }
