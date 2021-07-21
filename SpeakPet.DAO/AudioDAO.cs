@@ -67,7 +67,8 @@ namespace SpeakPet.DAO
 
             sql.Append(@"
                         SELECT Titulo as Titulo,
-                            Arquivo as Bytes
+                            Arquivo as Bytes,
+                            Id as Id
                         FROM Audio
                         WHERE idUsuario = @IdUsuario
                         ");
