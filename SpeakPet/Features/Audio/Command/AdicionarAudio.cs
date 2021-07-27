@@ -3,6 +3,7 @@ using SpeakPet.Dominio.Base;
 using SpeakPet.Dominio.Models;
 using SpeakPet.Dominio.Servico.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -10,9 +11,7 @@ namespace SpeakPet.Features.Audio.Command
 {
     public class AdicionarAudioCommand : IRequest<AdicionarAudioResponse>
     {
-        public string Titulo { get; set; }
-        public byte[] Bytes { get; set; }
-        public int IdUsuario { get; set; }
+        public IList<AudioModel> Audios { get; set; }
     }
 
     public class AdicionarAudioResponse : BaseResponse
@@ -33,24 +32,22 @@ namespace SpeakPet.Features.Audio.Command
             if (request == null)
                 throw new ArgumentNullException();
 
-            AudioModel audio = new AudioModel(request.Titulo, request.Bytes, request.IdUsuario);
-
             try
             {
-                _audio.InserirAudio(audio);
+                _audio.InserirAudios(request.Audios);
             }
             catch
             {
                 return Task.FromResult(new AdicionarAudioResponse
                 {
-                    Mensagem = "Ocorreu um erro ao tentar adicionar o audio.",
+                    Mensagem = "Ocorreu um erro ao tentar adicionar os audios.",
                     Sucesso = false
                 });
             }
 
             return Task.FromResult(new AdicionarAudioResponse
             {
-                Mensagem = "Audio adicionado com sucesso.",
+                Mensagem = "Audios adicionados com sucesso.",
                 Sucesso = true
             });
         }

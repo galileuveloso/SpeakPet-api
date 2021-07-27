@@ -8,7 +8,7 @@ namespace SpeakPet.DAO
 {
     public class AudioDAO : IAudioDAO
     {
-        public void InserirAudio(AudioModel audio)
+        public void InserirAudios(IList<AudioModel> audios)
         {
             StringBuilder sqlAudio = new StringBuilder();
 
@@ -16,8 +16,9 @@ namespace SpeakPet.DAO
                             INSERT INTO dbo.Audio(titulo, arquivo, idusuario)
                             VALUES(@Titulo, @Bytes, @IdUsuario)
                             ");
-
-            Conexao.GetConnection().Execute(sqlAudio.ToString(), audio);
+           
+            foreach(AudioModel audio in audios)
+                Conexao.GetConnection().Execute(sqlAudio.ToString(), audio);
         }
 
         public AudioModel ObterAudio(int idAudio)

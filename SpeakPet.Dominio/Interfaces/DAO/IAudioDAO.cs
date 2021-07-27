@@ -5,7 +5,7 @@ namespace SpeakPet.Dominio.Interfaces.DAO
 {
     public interface IAudioDAO
     {
-        void InserirAudio(AudioModel audio);
+        void InserirAudios(IList<AudioModel> audios);
         AudioModel ObterAudio(int idAudio);
         void ExcluirAudio(int idAudio);
         void EditarAudio(int idAudio, string novoTitulo);

@@ -17,9 +17,9 @@ namespace SpeakPet.Servicos
             return _audioDAO;
         }
 
-        public void InserirAudio(AudioModel audio)
+        public void InserirAudios(IList<AudioModel> audios)
         {
-            ObterDAO().InserirAudio(audio);
+            ObterDAO().InserirAudios(audios);
         }
 
         public AudioModel ObterAudio(int idAudio)
