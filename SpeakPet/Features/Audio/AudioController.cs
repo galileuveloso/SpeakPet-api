@@ -29,6 +29,12 @@ namespace SpeakPet.Features.Audio
             return Ok(await _mediator.Send(request));
         }
 
+        [HttpPost("adicionaryt")]
+        public async Task<IActionResult> Post([FromBody] AdicionarAudioYouTubeCommand request)
+        {
+            return Ok(await _mediator.Send(request));
+        }
+
         [HttpDelete("excluir")]
         public async Task<IActionResult> Delete([FromBody] ExcluirAudioCommad request)
         {

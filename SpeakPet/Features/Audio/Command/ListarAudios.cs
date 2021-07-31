@@ -1,9 +1,10 @@
 ﻿using MediatR;
 using SpeakPet.Dominio.Base;
-using SpeakPet.Dominio.Models;
+using SpeakPet.Dominio.Models.Visualizacao;
 using SpeakPet.Dominio.Servico.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -21,7 +22,7 @@ namespace SpeakPet.Features.Audio.Command
 
     public class ListarAudiosResponse : BaseResponse
     {
-        public IEnumerable<AudioModel> Audios { get; set; }
+        public IList<ItemListaAudio> Audios { get; set; }
     }
 
     public class ListarAudiosHandler : IRequestHandler<ListarAudiosCommand, ListarAudiosResponse>
@@ -38,12 +39,12 @@ namespace SpeakPet.Features.Audio.Command
             if (request == null)
                 throw new NullReferenceException();
 
-            IEnumerable<AudioModel> audios;
+            IList<ItemListaAudio> audios;
             try
             {
-                audios = _audio.ListarAudios(request.IdUsuario);
+                audios = _audio.ListarAudios(request.IdUsuario).ToList();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return Task.FromResult(new ListarAudiosResponse
                 {

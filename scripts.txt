@@ -7,9 +7,10 @@ create table Usuario(
 create table Audio(
 	id int identity(1,1) primary key,
 	titulo varchar(255) not null,
-	arquivo varbinary(max) filestream not null,
-	RowGuid UNIQUEIDENTIFIER  NOT NULL  ROWGUIDCOL
+	arquivo varbinary(max) filestream,
+	rowGuid UNIQUEIDENTIFIER ROWGUIDCOL NOT NULL
 	UNIQUE DEFAULT NEWID(),
+	linkYouTube varchar(255),
 	idUsuario int not null,
 	constraint pk_Usuario Foreign key (idUsuario) REFERENCES Usuario(id)
 )

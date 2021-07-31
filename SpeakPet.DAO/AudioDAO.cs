@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using SpeakPet.Dominio.Interfaces.DAO;
 using SpeakPet.Dominio.Models;
+using SpeakPet.Dominio.Models.Visualizacao;
 using System.Collections.Generic;
 using System.Text;
 
@@ -16,9 +17,21 @@ namespace SpeakPet.DAO
                             INSERT INTO dbo.Audio(titulo, arquivo, idusuario)
                             VALUES(@Titulo, @Bytes, @IdUsuario)
                             ");
-           
-            foreach(AudioModel audio in audios)
+
+            foreach (AudioModel audio in audios)
                 Conexao.GetConnection().Execute(sqlAudio.ToString(), audio);
+        }
+
+        public void InserirAudioYoutube(AudioYouTubeModel audioYouTube)
+        {
+            StringBuilder sql = new StringBuilder();
+
+            sql.Append(@"
+                        INSERT INTO dbo.Audio(titulo, linkYouTube, idusuario)
+                        VALUES(@Titulo, @LinkYouTube, @IdUsuario)
+                        ");
+
+            Conexao.GetConnection().Execute(sql.ToString(), audioYouTube);
         }
 
         public AudioModel ObterAudio(int idAudio)
@@ -27,7 +40,7 @@ namespace SpeakPet.DAO
 
             sqlAudio.Append(@"
                             SELECT Titulo as Titulo,
-                            Arquivo as Bytes
+                            Arquivo as Bytes,
                             FROM Audio
                             WHERE id = @IdAudio
                             ");
@@ -62,19 +75,18 @@ namespace SpeakPet.DAO
             Conexao.GetConnection().Execute(sql.ToString(), new { IdAudio = idAudio, NovoTitulo = novoTitulo });
         }
 
-        public IEnumerable<AudioModel> ListarAudios(int idUsuario)
+        public IEnumerable<ItemListaAudio> ListarAudios(int idUsuario)
         {
             StringBuilder sql = new StringBuilder();
 
             sql.Append(@"
                         SELECT Titulo as Titulo,
-                            Arquivo as Bytes,
                             Id as Id
                         FROM Audio
                         WHERE idUsuario = @IdUsuario
                         ");
 
-            return Conexao.GetConnection().Query<AudioModel>(sql.ToString(), new { IdUsuario = idUsuario });
+            return Conexao.GetConnection().Query<ItemListaAudio>(sql.ToString(), new { IdUsuario = idUsuario });
         }
     }
 }
