@@ -14,3 +14,20 @@ create table Audio(
 	idUsuario int not null,
 	constraint pk_Usuario Foreign key (idUsuario) REFERENCES Usuario(id)
 )
+
+create table Acao(
+	codAcao int primary key,
+	descricao varchar(255)
+)
+
+create table AcaoAudio(
+	id int identity(1,1) primary key,
+	codAcao int,
+	idAudio int,
+	idUsuario int,
+	constraint pk_Acao foreign key (codAcao) references Acao(codAcao),
+	constraint pk_Audio foreign key (idAudio) references Audio(id),
+	constraint pk_UsuarioAcaoAudio foreign key (idUsuario) references Usuario(id)
+)
+
+INSERT INTO Acao(codAcao, descricao) VALUES(1, 'Reproduzir'), (2, 'Parar')
