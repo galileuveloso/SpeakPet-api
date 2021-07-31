@@ -11,7 +11,6 @@ namespace SpeakPet.Dominio.Models
             IdUsuario = idUsuario;
         }
 
-        public int Id { get; set; }
         public AcaoEnum Acao { get; set; }
         public int IdAudio { get; set; }
         public int IdUsuario { get; set; }
