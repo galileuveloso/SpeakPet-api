@@ -12,7 +12,7 @@ namespace SpeakPet.DAO
             StringBuilder sql = new StringBuilder();
 
             sql.Append(@"INSERT INTO AcaoAudio(codAcao, idAudio, idUsuario)
-                         VALUES (@CodAcao, @IdAudio, @IdUsuario)");
+                         VALUES (@Acao, @IdAudio, @IdUsuario)");
 
             Conexao.GetConnection().Execute(sql.ToString(), acaoAudio);
         }
