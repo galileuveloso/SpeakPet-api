@@ -1,6 +1,9 @@
-﻿namespace SpeakPet.Dominio.Interfaces.Servico
+﻿using SpeakPet.Dominio.Models;
+
+namespace SpeakPet.Dominio.Interfaces.Servico
 {
     public interface IAcaoAudioService
     {
+        void RegistrarAcaoAudio(AcaoAudioModel acaoAudio);
     }
 }

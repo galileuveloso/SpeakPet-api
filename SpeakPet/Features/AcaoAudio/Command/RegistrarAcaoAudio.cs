@@ -2,7 +2,7 @@
 using SpeakPet.Dominio.Base;
 using SpeakPet.Dominio.Enums;
 using SpeakPet.Dominio.Interfaces.Servico;
-using SpeakPet.Dominio.Servico.Interfaces;
+using SpeakPet.Dominio.Models;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -29,16 +29,14 @@ namespace SpeakPet.Features.Acao.Command
             _acaoAudio = acaoAudio;
         }
 
-        public object Taks { get; private set; }
-
         public Task<RegistrarAcaoAudioResponse> Handle(RegistarAcaoAudioCommand request, CancellationToken cancellationToken)
         {
             if (request == null)
                 throw new ArgumentNullException();
-
+    
             try
             {
-                //audio = _audio.ObterAudio(request.IdAudio);
+                _acaoAudio.RegistrarAcaoAudio(new AcaoAudioModel(request.Acao, request.IdAudio, request.IdUsuario));
             }
             catch
             {
