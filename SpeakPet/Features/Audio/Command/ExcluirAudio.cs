@@ -46,7 +46,7 @@ namespace SpeakPet.Features.Audio.Command
             return Task.FromResult(new ExcluirAudioResponse
             {
                 Mensagem = "Audio excluido com sucesso.",
-                Sucesso = false
+                Sucesso = true
             });
         }
     }

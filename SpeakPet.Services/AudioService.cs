@@ -1,6 +1,7 @@
 ﻿using SpeakPet.DAO;
 using SpeakPet.Dominio.Interfaces.DAO;
 using SpeakPet.Dominio.Models;
+using SpeakPet.Dominio.Models.Visualizacao;
 using SpeakPet.Dominio.Servico.Interfaces;
 using System.Collections.Generic;
 
@@ -17,9 +18,14 @@ namespace SpeakPet.Servicos
             return _audioDAO;
         }
 
-        public void InserirAudio(AudioModel audio)
+        public void InserirAudios(IList<AudioModel> audios)
         {
-            ObterDAO().InserirAudio(audio);
+            ObterDAO().InserirAudios(audios);
+        }
+
+        public void InserirAudioYoutube(AudioYouTubeModel audioYouTube)
+        {
+            ObterDAO().InserirAudioYoutube(audioYouTube);
         }
 
         public AudioModel ObterAudio(int idAudio)
@@ -37,7 +43,7 @@ namespace SpeakPet.Servicos
             ObterDAO().EditarAudio(idAudio, novoTitulo);
         }
 
-        public IEnumerable<AudioModel> ListarAudios(int idUsuario)
+        public IEnumerable<ItemListaAudio> ListarAudios(int idUsuario)
         {
             return ObterDAO().ListarAudios(idUsuario);
         }
