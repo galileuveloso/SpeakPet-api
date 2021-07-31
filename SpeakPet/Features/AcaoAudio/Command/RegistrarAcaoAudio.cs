@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using SpeakPet.Dominio.Base;
 using SpeakPet.Dominio.Enums;
+using SpeakPet.Dominio.Interfaces.Servico;
 using SpeakPet.Dominio.Servico.Interfaces;
 using System;
 using System.Threading;
@@ -21,11 +22,11 @@ namespace SpeakPet.Features.Acao.Command
 
     public class ReproduzirAudioHandler : IRequestHandler<RegistarAcaoAudioCommand, RegistrarAcaoAudioResponse>
     {
-        private readonly IAudioService _audio;
+        private readonly IAcaoAudioService _acaoAudio;
 
-        public ReproduzirAudioHandler(IAudioService audio)
+        public ReproduzirAudioHandler(IAcaoAudioService acaoAudio)
         {
-            _audio = audio;
+            _acaoAudio = acaoAudio;
         }
 
         public object Taks { get; private set; }
