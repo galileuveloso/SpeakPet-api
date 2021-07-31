@@ -8,11 +8,11 @@ namespace SpeakPet.Features.Acao
 {
     [Route("/acao")]
     [ApiController]
-    public class AcaoController : ControllerBase
+    public class AcaoAudioController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public AcaoController(IMediator mediator)
+        public AcaoAudioController(IMediator mediator)
         {
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
