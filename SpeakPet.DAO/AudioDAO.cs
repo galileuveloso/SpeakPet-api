@@ -5,7 +5,7 @@ using SpeakPet.Dominio.Models.Visualizacao;
 using System.Collections.Generic;
 using System.Text;
 
-namespace SpeakPet.DAO
+namespace SpeakPet.DAL
 {
     public class AudioDAO : IAudioDAO
     {

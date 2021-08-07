@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SpeakPet.DAO\SpeakPet.DAO.csproj" />
+    <ProjectReference Include="..\SpeakPet.DAO\SpeakPet.DAL.csproj" />
     <ProjectReference Include="..\SpeakPet.Dominio\SpeakPet.Dominio.csproj" />
   </ItemGroup>
 
