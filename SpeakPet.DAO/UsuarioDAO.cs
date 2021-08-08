@@ -3,7 +3,7 @@ using SpeakPet.Dominio.Interfaces.DAO;
 using SpeakPet.Dominio.Models;
 using System.Text;
 
-namespace SpeakPet.DAO
+namespace SpeakPet.DAL
 {
     public class UsuarioDAO : IUsuarioDAO
     {

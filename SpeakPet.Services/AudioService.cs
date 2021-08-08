@@ -1,4 +1,4 @@
-﻿using SpeakPet.DAO;
+﻿using SpeakPet.DAL;
 using SpeakPet.Dominio.Interfaces.DAO;
 using SpeakPet.Dominio.Models;
 using SpeakPet.Dominio.Models.Visualizacao;

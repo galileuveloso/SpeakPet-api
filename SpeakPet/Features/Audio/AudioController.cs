@@ -17,12 +17,6 @@ namespace SpeakPet.Features.Audio
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
 
-        [HttpPost("reproduzir")]
-        public async Task<IActionResult> Post([FromBody] ReproduzirAudioCommand request)
-        {
-            return Ok(await _mediator.Send(request));
-        }
-
         [HttpPost("adicionar")]
         public async Task<IActionResult> Post([FromBody] AdicionarAudioCommand request)
         {

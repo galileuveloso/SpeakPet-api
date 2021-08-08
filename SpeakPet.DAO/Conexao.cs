@@ -1,6 +1,6 @@
 ﻿using System.Data.SqlClient;
 
-namespace SpeakPet.DAO
+namespace SpeakPet.DAL
 {
     public static class Conexao
     {

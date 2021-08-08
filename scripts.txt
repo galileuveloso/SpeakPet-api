@@ -14,3 +14,13 @@ create table Audio(
 	idUsuario int not null,
 	constraint pk_Usuario Foreign key (idUsuario) REFERENCES Usuario(id)
 )
+
+create table Reproducao(
+	 id int identity(1,1) primary key,
+	 idAudio int,
+	 idUsuario int,
+	 dataReproducao date not null,
+	 ativo bit not null,
+	 CONSTRAINT fkAudio FOREIGN KEY(idAudio) REFERENCES Audio(id),
+	 CONSTRAINT fkUsuario FOREIGN KEY(idUsuario) REFERENCES Usuario(id)
+)

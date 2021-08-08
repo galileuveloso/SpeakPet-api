@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpeakPet.Dominio", "SpeakPe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpeakPet.Servicos", "SpeakPet.Services\SpeakPet.Servicos.csproj", "{1201D172-8C81-4A65-9DC2-D8EDC4E72C41}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpeakPet.DAO", "SpeakPet.DAO\SpeakPet.DAO.csproj", "{29CCB239-8F7F-4E24-B0F7-D39C3CF24231}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpeakPet.DAL", "SpeakPet.DAO\SpeakPet.DAL.csproj", "{29CCB239-8F7F-4E24-B0F7-D39C3CF24231}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
