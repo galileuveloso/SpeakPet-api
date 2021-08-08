@@ -33,7 +33,7 @@ namespace SpeakPet
 
             services.AddScoped(typeof(IAudioService), typeof(AudioService));
             services.AddScoped(typeof(IUsuarioService), typeof(UsuarioService));
-            services.AddScoped(typeof(IAcaoAudioService), typeof(AcaoAudioService));
+            services.AddScoped(typeof(IReproducaoService), typeof(ReproducaoService));
 
             services.AddSwaggerGen(c =>
             {

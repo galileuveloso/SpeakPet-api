@@ -8,12 +8,15 @@ namespace SpeakPet.Dominio.Models
         public int IdAudio { get; set; }
         public int IdUsuario { get; set; }
         public DateTime DataReproducao { get; set; }
-        private int ativo;
-        public bool Ativo
+        public bool Ativo { get; set; }
+
+        public int AtivoBit
         {
             get
             {
-                return ativo == 1;
+                if (Ativo == true)
+                    return 1;
+                return 0;
             }
         }
     }

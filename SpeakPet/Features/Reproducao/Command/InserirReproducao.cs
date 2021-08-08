@@ -15,7 +15,8 @@ namespace SpeakPet.Features.Reproducao.Command
 
     public class InserirReproducaoResponse : BaseResponse
     {
-
+        public bool Reproduzindo { get; set; }
+        public int? IdReproducao { get; set; }
     }
 
     public class InserirReproducaoHandler : IRequestHandler<InserirReproducaoCommand, InserirReproducaoResponse>
@@ -34,7 +35,17 @@ namespace SpeakPet.Features.Reproducao.Command
 
             try
             {
-                _reproducao.InserirReproducao(request.Reproducao);
+                int? atual = _reproducao.ObterReproducaoAtual(request.Reproducao.IdUsuario);
+                if (atual == null || !atual.HasValue || atual == 0)
+                    _reproducao.InserirReproducao(request.Reproducao);
+                else
+                    return Task.FromResult(new InserirReproducaoResponse
+                    {
+                        Mensagem = "Existe um Audio em reproducao no momento.",
+                        Sucesso = false,
+                        Reproduzindo = true,
+                        IdReproducao = atual
+                    });
             }
             catch
             {

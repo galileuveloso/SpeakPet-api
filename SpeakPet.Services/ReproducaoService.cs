@@ -25,5 +25,10 @@ namespace SpeakPet.Servicos
         {
             ObterDAO().DesativarReproducao(idReproducao);
         }
+
+        public int? ObterReproducaoAtual(int idUsuario)
+        {
+            return ObterDAO().ObterReproducaoAtual(idUsuario);
+        }
     }
 }

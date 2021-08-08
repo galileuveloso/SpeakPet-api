@@ -6,5 +6,6 @@ namespace SpeakPet.Dominio.Interfaces.Servico
     {
         void InserirReproducao(ReproducaoModel reproducao);
         void DesativarReproducao(int idReproducao);
+        int? ObterReproducaoAtual(int idUsuario);
     }
 }

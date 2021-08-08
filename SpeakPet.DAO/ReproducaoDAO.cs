@@ -13,7 +13,7 @@ namespace SpeakPet.DAL
 
             sql.Append(@"
                         INSERT INTO Reproducao (idAudio, idUsuario, dataReproducao, Ativo)
-                        VALUES (@IdAudio, IdUsuario, DataReproducao, Ativo)
+                        VALUES (@IdAudio, @IdUsuario, @DataReproducao, @AtivoBit)
                         ");
 
             Conexao.GetConnection().Execute(sql.ToString(), reproducao);
@@ -30,6 +30,20 @@ namespace SpeakPet.DAL
                         ");
 
             Conexao.GetConnection().Execute(sql.ToString(), new { IdReproducao = idReproducao });
+        }
+
+        public int? ObterReproducaoAtual(int idUsuario)
+        {
+            StringBuilder sql = new StringBuilder();
+
+            sql.Append(@"
+                        SELECT Id
+                        FROM Reproducao
+                        WHERE Ativo = 1
+                        AND IdUsuario = @IdUsuario
+                       ");
+
+            return Conexao.GetConnection().QuerySingleOrDefault<int>(sql.ToString(), new { IdUsuario = idUsuario });
         }
     }
 }
